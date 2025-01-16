@@ -49,3 +49,11 @@ body {
 .glow-green {
     box-shadow: 1px 1px 15px 5px rgb(148, 238, 130);
 }
+
+.purple {
+    background-color: rgb(190, 20, 228);
+}
+
+.glow-purple {
+    box-shadow: 1px 1px 15px 5px rgb(218, 130, 238);
+}
