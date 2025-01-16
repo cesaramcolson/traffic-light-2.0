@@ -8,9 +8,9 @@ const TrafficLight = () => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			const currentColor = initialColors.indexOf(color);
-			const nextColor = (currentColor + 1) % initialColors.length;
-			setColor(initialColors[nextColor])
+			const currentColor = colors.indexOf(color);
+			const nextColor = (currentColor + 1) % colors.length;
+			setColor(colors[nextColor])
 		}, 3000);
 
 		return () => clearInterval(interval);
@@ -26,12 +26,14 @@ const TrafficLight = () => {
 		<div className="container">
 			<div className="pole"></div>
 			<div className="structure">
-				<div onClick={() => setColor("red")} className={"light red" + (color === "red" ? " glow-red" : "")}></div>
-				<div onClick={() => setColor("yellow")} className={"light yellow" + (color === "yellow" ? " glow-yellow" : "")}></div>
-				<div onClick={() => setColor("green")} className={"light green" + (color === "green" ? " glow-green" : "")}></div>
-				{colors.includes("purple") && (
-					<div onClick={() => setColor("purple")} className={"light purple" + (color === "purple" ? " glow-purple" : "")}></div>
-				)}
+				{colors.map((c) => (
+					<div
+					key={c}
+					onClick={() => setColor(c)}
+					className={`light ${c} ${color === c ? `glow-${c}` : ""}`}
+					>
+					</div>
+				))}
 			</div>
 			<div>
                 <button className="btn btn-warning mt-3 ms-2" onClick={addPurple}>Add Purple</button>
